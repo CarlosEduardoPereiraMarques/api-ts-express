@@ -21,6 +21,7 @@
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "start": "ts-node-dev src/index"
+    "start": "ts-node-dev src/index",
+    "build": "tsc"
   }
 }
