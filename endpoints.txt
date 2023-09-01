@@ -1,0 +1,22 @@
+
+Cidades (privado)
+
+GET    /cidades     Busca uma lista de cidades, com paginação e filtro por nome
+POST   /cidades     Cria uma nova cidade
+GET    /cidades/:id Busca apenas uma cidade pelo seu id
+PUT    /cidades/:id Atualiza uma cidade pelo id
+DELETE /cidades/:id Apaga a cidade pelo seu id
+
+
+Pessoas (privado)
+
+GET    /pessoas     Busca uma lista de pessoas, com paginação e filtro por nome
+POST   /pessoas     Cria uma nova pessoa
+GET    /pessoas/:id Busca apenas uma pessoa pelo seu id
+PUT    /pessoas/:id Atualiza uma pessoa pelo seu id
+DELETE /pessoas/:id Apaga a pessoa pelo seu id
+
+Login (público)
+
+POST   /login       Permite um usuário existente no sistema gerar um token para acessar os endpoints privados
+POST   /sign-up     Permite criar um novo usuário
