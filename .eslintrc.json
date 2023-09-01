@@ -24,6 +24,7 @@
         "quotes": [
             "error",
             "single"
-        ]
+        ],
+        "@typescript-eslint/ban-types": "off"
     }
 }

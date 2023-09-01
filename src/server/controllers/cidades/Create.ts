@@ -1,6 +1,11 @@
 import { Request, Response } from 'express'
 
-export const create = (request: Request, response: Response) => {
+interface ICidade{
+    nome: string
+}
+
+export const create = (request: Request<{}, {}, ICidade>, response: Response) => {
+    const data = request.body
 
     return response.send('Create!')
 }
