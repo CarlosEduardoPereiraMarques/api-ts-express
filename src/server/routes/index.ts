@@ -7,7 +7,7 @@ router.get('/', (request, response) => {
     return response.send('Hello World!')
 })
 
-router.post('/cidades/create', CidadesController.createBodyValidator, CidadesController.createCity)
+router.post('/cidades/create', CidadesController.createBodyValidator, CidadesController.createQueryValidator, CidadesController.createCity)
 
 
 export { router }
