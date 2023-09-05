@@ -4,3 +4,4 @@ notes.txt
 /build
 .vscode
 /coverage
+.vercel
