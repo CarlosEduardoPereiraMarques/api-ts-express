@@ -18,5 +18,5 @@ export const getById = async (
     response: Response
 ) => {
     console.log(request.params)
-    return response.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não Implementado GET ID!');
+    return response.status(StatusCodes.BAD_REQUEST).send('Não Implementado GET ID!');
 };

@@ -17,5 +17,6 @@ export const create = async (
     request: Request<{}, {}, ICidade>,
     response: Response
 ) => {
-    return response.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não Implementado POST!');
+
+    return response.status(StatusCodes.CREATED).send('Não Implementado POST!');
 };

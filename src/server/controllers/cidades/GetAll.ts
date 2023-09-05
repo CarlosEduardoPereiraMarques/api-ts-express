@@ -23,5 +23,5 @@ export const getAll = async (
     response: Response
 ) => {
     console.log(request.query)
-    return response.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não Implementado GET!');
+    return response.status(StatusCodes.BAD_REQUEST).send('Não Implementado GET!');
 };

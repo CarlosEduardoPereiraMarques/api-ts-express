@@ -18,5 +18,5 @@ export const deleteById = async (
     response: Response
 ) => {
     console.log(request.params)
-    return response.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não Implementado DELETE!');
+    return response.status(StatusCodes.NO_CONTENT).send('Não Implementado DELETE!');
 };

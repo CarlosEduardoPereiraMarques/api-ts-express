@@ -25,5 +25,5 @@ export const updateById = async (
     response: Response
 ) => {
     console.log(request.params)
-    return response.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não Implementado PUT!');
+    return response.status(StatusCodes.ACCEPTED).send('Não Implementado PUT!');
 };
