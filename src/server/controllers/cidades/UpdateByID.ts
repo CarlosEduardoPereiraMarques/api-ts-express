@@ -24,6 +24,6 @@ export const updateById = async (
     request: Request<IParamProps, {}, IBodyProps>,
     response: Response
 ) => {
-    console.log(request.params)
+
     return response.status(StatusCodes.ACCEPTED).send('Não Implementado PUT!');
 };

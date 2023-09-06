@@ -17,6 +17,6 @@ export const getById = async (
     request: Request<IParamProps>,
     response: Response
 ) => {
-    console.log(request.params)
+
     return response.status(StatusCodes.BAD_REQUEST).send('Não Implementado GET ID!');
 };

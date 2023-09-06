@@ -2,19 +2,19 @@ import { Request, RequestHandler, Response } from 'express';
 import * as YUP from 'yup';
 import { validation } from '../../shared/middleware';
 import { StatusCodes } from 'http-status-codes';
+import { ICidade } from '../../database/models';
 
-interface ICidade {
-    nome: string;
-}
+
+interface IBodyProps extends ICidade {}
 
 export const createValidation: RequestHandler = validation((getSchema) => ({
-    body: getSchema<ICidade>(YUP.object().shape({
+    body: getSchema<IBodyProps>(YUP.object().shape({
         nome: YUP.string().required().min(3),
     }))
 }));
 
 export const create = async (
-    request: Request<{}, {}, ICidade>,
+    request: Request<{}, {}, IBodyProps>,
     response: Response
 ) => {
 

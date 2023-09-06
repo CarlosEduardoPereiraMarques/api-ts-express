@@ -17,6 +17,6 @@ export const deleteById = async (
     request: Request<IParamProps>,
     response: Response
 ) => {
-    console.log(request.params)
+
     return response.status(StatusCodes.NO_CONTENT).send('Não Implementado DELETE!');
 };

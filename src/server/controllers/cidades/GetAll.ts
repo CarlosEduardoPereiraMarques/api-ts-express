@@ -22,6 +22,6 @@ export const getAll = async (
     request: Request<{}, {}, {}, IQueryProps>,
     response: Response
 ) => {
-    console.log(request.query)
+
     return response.status(StatusCodes.BAD_REQUEST).send('Não Implementado GET!');
 };
