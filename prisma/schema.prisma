@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model cidade {
+  id     Int      @id @default(autoincrement())
+  nome   String   @db.VarChar(150)
+  pessoa pessoa[]
+}
+
+model pessoa {
+  id            Int    @id @default(autoincrement())
+  nome_completo String @db.VarChar(255)
+  email         String @unique @db.VarChar(255)
+  cidade_id     Int
+  cidade        cidade @relation(fields: [cidade_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model usuario {
+  id    Int    @id @default(autoincrement())
+  nome  String @db.VarChar(255)
+  email String @unique @db.VarChar(255)
+  senha String @db.VarChar(255)
+}
