@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 import { ICidade } from '../../database/models';
 
 
-interface IBodyProps extends ICidade {}
+interface IBodyProps extends Omit<ICidade, 'id'> {}
 
 export const createValidation: RequestHandler = validation((getSchema) => ({
     body: getSchema<IBodyProps>(YUP.object().shape({
