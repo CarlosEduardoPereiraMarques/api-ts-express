@@ -22,6 +22,7 @@
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
     "eslint": "^8.48.0",
+    "jest-mock-extended": "^3.0.5",
     "prisma": "^5.2.0",
     "supertest": "^6.3.3",
     "ts-node-dev": "^2.0.0",
