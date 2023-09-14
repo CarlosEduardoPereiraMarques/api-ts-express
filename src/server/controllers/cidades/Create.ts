@@ -29,5 +29,5 @@ export const create = async (
     }
 
 
-    return response.status(StatusCodes.CREATED).send('Não Implementado POST!');
+    return response.status(StatusCodes.CREATED).json(result);
 };
