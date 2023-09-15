@@ -1,11 +1,11 @@
-import { Request, RequestHandler, Response } from 'express';
-import * as YUP from 'yup';
-import { validation } from '../../shared/middleware';
-import { StatusCodes } from 'http-status-codes';
-import { CidadesProvider } from '../../database/providers/cidades';
+import { Request, RequestHandler, Response } from 'express'
+import * as YUP from 'yup'
+import { validation } from '../../shared/middleware'
+import { StatusCodes } from 'http-status-codes'
+import { CidadesProvider } from '../../database/providers/cidades'
 
 interface IParamProps {
-    id?: number;
+    id?: number
 }
 
 export const deleteByIdValidation: RequestHandler = validation((getSchema) => ({
@@ -14,7 +14,7 @@ export const deleteByIdValidation: RequestHandler = validation((getSchema) => ({
             id: YUP.number().integer().required().moreThan(0),
         })
     ),
-}));
+}))
 
 export const deleteById = async (
     request: Request<IParamProps>,
@@ -25,18 +25,16 @@ export const deleteById = async (
             errors: {
                 default: 'ID não informado!',
             },
-        });
+        })
     }
 
-    const result = await CidadesProvider.deleteById(request.params.id);
+    const result = await CidadesProvider.deleteById(request.params.id)
     if (result instanceof Error) {
         return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {
                 default: result.message,
             },
-        });
+        })
     }
-    return response
-        .status(StatusCodes.NO_CONTENT)
-        .send();
-};
+    return response.status(StatusCodes.NO_CONTENT).send()
+}

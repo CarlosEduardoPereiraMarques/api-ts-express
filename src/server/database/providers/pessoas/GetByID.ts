@@ -1,12 +1,12 @@
-import { IPessoa } from "../../models";
-import { database } from "../..";
+import { IPessoa } from '../../models'
+import { database } from '../..'
 
 export const getById = async (id: number): Promise<IPessoa | Error> => {
     try {
         const result = await database.pessoa.findUnique({
             where: {
-                id: id
-            }
+                id: id,
+            },
         })
 
         if (!result) {

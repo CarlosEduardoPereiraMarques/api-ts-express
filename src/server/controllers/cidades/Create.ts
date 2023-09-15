@@ -1,18 +1,19 @@
-import { Request, RequestHandler, Response } from 'express';
-import * as YUP from 'yup';
-import { validation } from '../../shared/middleware';
-import { StatusCodes } from 'http-status-codes';
-import { ICidade } from '../../database/models';
-import { CidadesProvider } from '../../database/providers/cidades';
-
+import { Request, RequestHandler, Response } from 'express'
+import * as YUP from 'yup'
+import { validation } from '../../shared/middleware'
+import { StatusCodes } from 'http-status-codes'
+import { ICidade } from '../../database/models'
+import { CidadesProvider } from '../../database/providers/cidades'
 
 interface IBodyProps extends Omit<ICidade, 'id'> {}
 
 export const createValidation: RequestHandler = validation((getSchema) => ({
-    body: getSchema<IBodyProps>(YUP.object().shape({
-        nome: YUP.string().required().min(3).max(150),
-    }))
-}));
+    body: getSchema<IBodyProps>(
+        YUP.object().shape({
+            nome: YUP.string().required().min(3).max(150),
+        })
+    ),
+}))
 
 export const create = async (
     request: Request<{}, {}, IBodyProps>,
@@ -23,11 +24,10 @@ export const create = async (
     if (result instanceof Error) {
         return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {
-                default: result.message
-            }
-        });
+                default: result.message,
+            },
+        })
     }
 
-
-    return response.status(StatusCodes.CREATED).json(result);
-};
+    return response.status(StatusCodes.CREATED).json(result)
+}

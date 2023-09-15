@@ -1,18 +1,20 @@
-import { Request, RequestHandler, Response } from 'express';
-import * as YUP from 'yup';
-import { validation } from '../../shared/middleware';
-import { StatusCodes } from 'http-status-codes';
-import { CidadesProvider } from '../../database/providers/cidades';
+import { Request, RequestHandler, Response } from 'express'
+import * as YUP from 'yup'
+import { validation } from '../../shared/middleware'
+import { StatusCodes } from 'http-status-codes'
+import { CidadesProvider } from '../../database/providers/cidades'
 
 interface IParamProps {
     id?: number
 }
 
 export const getByIdValidation: RequestHandler = validation((getSchema) => ({
-    params: getSchema<IParamProps>(YUP.object().shape({
-        id: YUP.number().integer().required().moreThan(0),
-    }))
-}));
+    params: getSchema<IParamProps>(
+        YUP.object().shape({
+            id: YUP.number().integer().required().moreThan(0),
+        })
+    ),
+}))
 
 export const getById = async (
     request: Request<IParamProps>,
@@ -23,15 +25,15 @@ export const getById = async (
             errors: {
                 default: 'ID não informado!',
             },
-        });
+        })
     }
     const result = await CidadesProvider.getById(request.params.id)
     if (result instanceof Error) {
         return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {
-                default: result.message
-            }
-        });
+                default: result.message,
+            },
+        })
     }
-    return response.status(StatusCodes.OK).json(result);
-};
+    return response.status(StatusCodes.OK).json(result)
+}

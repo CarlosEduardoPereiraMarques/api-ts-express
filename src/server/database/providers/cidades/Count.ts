@@ -1,6 +1,6 @@
 import { database } from '../..'
 
-export const count =async (filter: string = ''): Promise<number | Error> => {
+export const count = async (filter: string = ''): Promise<number | Error> => {
     try {
         const where = filter
             ? {
@@ -8,20 +8,20 @@ export const count =async (filter: string = ''): Promise<number | Error> => {
                     contains: filter,
                 },
             }
-            : {};
+            : {}
 
         const totalCount = await database.cidade.count({
             where,
-        });
+        })
 
         if (!totalCount) {
-            return new Error('Nenhum registro encontrado');
+            return new Error('Nenhum registro encontrado')
         }
 
-        return totalCount;
+        return totalCount
     } catch (error) {
-        return new Error ('Erro ao buscar registros')
+        return new Error('Erro ao buscar registros')
     } finally {
-        database.$disconnect();
+        database.$disconnect()
     }
 }

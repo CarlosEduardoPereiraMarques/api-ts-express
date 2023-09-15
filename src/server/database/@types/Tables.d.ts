@@ -1,4 +1,4 @@
-import { ICidade, IPessoa, IUsuario } from '../models';
+import { ICidade, IPessoa, IUsuario } from '../models'
 
 declare module 'Tables' {
     interface Tables {

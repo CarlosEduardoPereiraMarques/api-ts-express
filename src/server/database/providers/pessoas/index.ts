@@ -11,5 +11,5 @@ export const PessoasProvider = {
     ...GetById,
     ...UpdateById,
     ...DeleteById,
-    ...Count
+    ...Count,
 }

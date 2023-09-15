@@ -11,5 +11,5 @@ export const CidadesProvider = {
     ...GetById,
     ...UpdateById,
     ...DeleteById,
-    ...Count
+    ...Count,
 }

@@ -9,5 +9,5 @@ export const CidadesController = {
     ...GetAll,
     ...GetById,
     ...UpdateById,
-    ...DeleteById
+    ...DeleteById,
 }
