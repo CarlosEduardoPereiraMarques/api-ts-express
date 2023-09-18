@@ -19,11 +19,7 @@ export const getAll = async (
                 contains: filter,
             }
         }
-
-        if (id > 0) {
-            where.id = id
-        }
-
+        
         const result = await database.pessoa.findMany({
             skip: skip,
             take: limit,

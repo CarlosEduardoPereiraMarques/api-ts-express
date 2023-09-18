@@ -5,7 +5,7 @@ export const getById = async (id: number): Promise<IPessoa | Error> => {
     try {
         const result = await database.pessoa.findUnique({
             where: {
-                id: id,
+                id: Number(id),
             },
         })
 

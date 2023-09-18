@@ -2,6 +2,7 @@ import { database } from '../..'
 
 export const deleteById = async (id: number): Promise<void | Error> => {
     try {
+        console.log('i')
         await database.pessoa.delete({
             where: {
                 id: Number(id),

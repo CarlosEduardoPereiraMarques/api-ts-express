@@ -5,7 +5,7 @@ export const create = async (
     pessoa: Omit<IPessoa, 'id'>
 ): Promise<Object | Error> => {
     try {
-        const [{ count }] = await database.cidade.findMany({
+        const count = await database.cidade.findMany({
             where:{
                 id: pessoa.cidade_id
             }
@@ -13,7 +13,6 @@ export const create = async (
         if (!count) {
             return Error('A cidade usada no cadastro não foi encontrada')
         }
-
         const createdPessoa = await database.pessoa.create({
             data: pessoa,
         })

@@ -4,7 +4,7 @@ import * as GetById from './GetByID'
 import * as UpdateById from './UpdateByID'
 import * as DeleteById from './DeleteByID'
 
-export const CidadesController = {
+export const PessoasController = {
     ...Create,
     ...GetAll,
     ...GetById,

@@ -5,9 +5,9 @@ export interface ICidade {
 
 export interface IPessoa {
     id: number
-    nome_completo: string
-    email: string
-    cidade_id: number
+    nome_completo?: string
+    email?: string
+    cidade_id?: number
 }
 
 export interface IUsuario {

@@ -2,7 +2,7 @@ import { Request, RequestHandler, Response } from 'express'
 import * as YUP from 'yup'
 import { validation } from '../../shared/middleware'
 import { StatusCodes } from 'http-status-codes'
-import { CidadesProvider } from '../../database/providers/cidades'
+import { PessoasProvider } from '../../database/providers/pessoas'
 
 interface IParamProps {
     id?: number
@@ -28,7 +28,7 @@ export const deleteById = async (
         })
     }
 
-    const result = await CidadesProvider.deleteById(request.params.id)
+    const result = await PessoasProvider.deleteById(request.params.id)
     if (result instanceof Error) {
         return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {

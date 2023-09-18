@@ -6,7 +6,7 @@ export const updateById = async (
     pessoa: Omit<IPessoa, 'id'>
 ): Promise<void | Error> => {
     try {
-        const [{ count }] = await database.cidade.findMany({
+        const count = await database.cidade.findMany({
             where:{
                 id: pessoa.cidade_id
             }
@@ -15,12 +15,12 @@ export const updateById = async (
             return Error('A cidade usada no cadastro não foi encontrada')
         }
 
-        const result = await database.cidade.update({
+        const result = await database.pessoa.update({
             where: {
                 id: Number(id),
             },
             data: {
-                nome: pessoa.nome_completo,
+                ...pessoa
             },
         })
         if (!result) {

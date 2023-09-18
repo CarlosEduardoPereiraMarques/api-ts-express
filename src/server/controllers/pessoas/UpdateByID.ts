@@ -14,9 +14,9 @@ interface IBodyProps extends Omit<IPessoa, 'id'> {}
 export const updateByIdValidation: RequestHandler = validation((getSchema) => ({
     body: getSchema<IBodyProps>(
         YUP.object().shape({
-            email: YUP.string().email().required(),
-            cidade_id: YUP.number().required().integer(),
-            nome_completo: YUP.string().required().min(3)
+            email: YUP.string().email().optional(),
+            cidade_id: YUP.number().optional().integer(),
+            nome_completo: YUP.string().optional().min(3)
         })
     ),
     params: getSchema<IParamProps>(
