@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { CidadesController, PessoasController } from '../controllers'
+import { CidadesController, PessoasController, UsuariosController } from '../controllers'
 
 const router = Router()
 
@@ -58,5 +58,11 @@ router.delete(
     PessoasController.deleteByIdValidation,
     PessoasController.deleteById
 )
+
+
+// Usuario
+
+router.post('/usuario/signin', UsuariosController.signInValidation, UsuariosController.signIn)
+router.post('/usuario/signup', UsuariosController.signUpValidation, UsuariosController.signUp)
 
 export { router }

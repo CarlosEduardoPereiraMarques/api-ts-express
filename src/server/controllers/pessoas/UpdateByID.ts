@@ -2,14 +2,14 @@ import { Request, RequestHandler, Response } from 'express'
 import * as YUP from 'yup'
 import { validation } from '../../shared/middleware'
 import { StatusCodes } from 'http-status-codes'
-import { IPessoa } from '../../database/models'
+import { IUpdatePessoa } from '../../database/models'
 import { PessoasProvider } from '../../database/providers/pessoas'
 
 interface IParamProps {
     id?: number
 }
 
-interface IBodyProps extends Omit<IPessoa, 'id'> {}
+interface IBodyProps extends Omit<IUpdatePessoa, 'id'> {}
 
 export const updateByIdValidation: RequestHandler = validation((getSchema) => ({
     body: getSchema<IBodyProps>(

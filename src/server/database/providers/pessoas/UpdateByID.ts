@@ -1,9 +1,9 @@
-import { IPessoa } from '../../models'
+import { IUpdatePessoa } from '../../models'
 import { database } from '../..'
 
 export const updateById = async (
     id: number,
-    pessoa: Omit<IPessoa, 'id'>
+    pessoa: Omit<IUpdatePessoa, 'id'>
 ): Promise<void | Error> => {
     try {
         const count = await database.cidade.findMany({
