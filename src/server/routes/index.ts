@@ -1,32 +1,33 @@
 import { Router } from 'express'
 import { CidadesController, PessoasController, UsuariosController } from '../controllers'
+import { ensureAuth } from '../shared/middleware'
 
 const router = Router()
 
 // Cidades
 
 router.post(
-    '/cidades/create',
+    '/cidades/create', ensureAuth,
     CidadesController.createValidation,
     CidadesController.create
 )
 router.get(
-    '/cidades',
+    '/cidades', ensureAuth,
     CidadesController.getAllValidation,
     CidadesController.getAll
 )
 router.get(
-    '/cidades/:id',
+    '/cidades/:id', ensureAuth,
     CidadesController.getByIdValidation,
     CidadesController.getById
 )
 router.put(
-    '/cidades/update/:id',
+    '/cidades/update/:id', ensureAuth,
     CidadesController.updateByIdValidation,
     CidadesController.updateById
 )
 router.delete(
-    '/cidades/delete/:id',
+    '/cidades/delete/:id', ensureAuth,
     CidadesController.deleteByIdValidation,
     CidadesController.deleteById
 )
@@ -34,27 +35,27 @@ router.delete(
 // Pessoas
 
 router.get(
-    '/pessoas',
+    '/pessoas', ensureAuth,
     PessoasController.getAllValidation,
     PessoasController.getAll
 )
 router.get(
-    '/pessoas/:id',
+    '/pessoas/:id', ensureAuth,
     PessoasController.getByIdValidation,
     PessoasController.getById
 )
 router.post(
-    '/pessoas/create',
+    '/pessoas/create', ensureAuth,
     PessoasController.createValidation,
     PessoasController.create
 )
 router.put(
-    '/pessoas/update/:id',
+    '/pessoas/update/:id', ensureAuth,
     PessoasController.updateByIdValidation,
     PessoasController.updateById
 )
 router.delete(
-    '/pessoas/delete/:id',
+    '/pessoas/delete/:id', ensureAuth,
     PessoasController.deleteByIdValidation,
     PessoasController.deleteById
 )
