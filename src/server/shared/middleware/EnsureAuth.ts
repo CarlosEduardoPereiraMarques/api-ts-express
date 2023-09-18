@@ -9,7 +9,21 @@ export const ensureAuth: RequestHandler = (request, response, next) => {
         }})
     }
 
+    const [type, token] = authorization.split(' ')
+    if (type !== 'Bearer') {
+        return response.status(StatusCodes.UNAUTHORIZED).json({errors: {
+            default: 'Não autenticado'
+        }})
+    }
+    if (token !== 'Bearer') {
+        return response.status(StatusCodes.UNAUTHORIZED).json({errors: {
+            default: 'Não autenticado'
+        }})
+    }
+
+
 
 
     return next()
 }
+
