@@ -3,16 +3,8 @@ import { testServer, prismaMock } from '../jest.setup'
 
 describe('Cidades - Create', () => {
 
-    beforeEach(() => {
-        prismaMock.cidade.create.mockReset()
-    })
-
     it('Deve criar um registro de cidade', async () => {
-        prismaMock.cidade.create.mockResolvedValue({
-            id: 2, // o id é gerado pelo banco
-            nome: 'Betim'
-        })
-
+        
         const responseCreate = await testServer
             .post('/cidades/create')
             .send({ nome: 'Betim' })
