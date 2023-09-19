@@ -1,6 +1,6 @@
 import { IPessoa } from '../../models'
 import { database } from '../..'
-import { Prisma } from '@prisma/client'
+
 
 export const getAll = async (
     page: number,
@@ -12,29 +12,27 @@ export const getAll = async (
         limit = Number(limit)
 
         const skip = (page - 1) * limit
-        const where: Prisma.pessoaWhereInput = {}
 
-        if (filter) {
-            where.nome_completo = {
-                contains: filter,
-            }
-        }
-        
         const result = await database.pessoa.findMany({
             skip: skip,
             take: limit,
-            where: where,
+            where: {
+                nome_completo: {
+                    contains: filter,
+                    mode: 'insensitive',
+                },
+            },
         })
 
         if (result.length === 0) {
-            throw new Error(
+            return new Error(
                 'Não foram encontrados registros com os filtros atuais'
             )
         }
 
         return result
     } catch (error) {
-        throw new Error('Erro ao buscar registro')
+        return new Error('Erro ao buscar registro')
     } finally {
         await database.$disconnect()
     }

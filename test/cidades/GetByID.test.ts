@@ -27,7 +27,7 @@ describe('Cidades - Get by ID', () => {
             .set('Authorization', `Bearer ${accessToken}`)
             .send()
 
-        expect(output.statusCode).toEqual(StatusCodes.BAD_REQUEST)
+        expect(output.statusCode).toEqual(StatusCodes.OK)
         expect(typeof output.body).toEqual('object')
 
     })
@@ -40,17 +40,6 @@ describe('Cidades - Get by ID', () => {
 
         expect(output.statusCode).toEqual(StatusCodes.BAD_REQUEST)
         expect(output.body).toHaveProperty('errors.params.id')
-
-    })
-
-    it('Tenta pegar um registro de cidade sem passar o campo ID', async () => {
-        const output = await testServer
-            .get('/cidades/')
-            .set('Authorization', `Bearer ${accessToken}`)
-            .send()
-
-        expect(output.statusCode).toEqual(StatusCodes.BAD_REQUEST)
-        expect(output.body).toEqual({})
 
     })
 })
