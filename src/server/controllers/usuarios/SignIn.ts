@@ -5,8 +5,9 @@ import { StatusCodes } from 'http-status-codes'
 import { IUsuario } from '../../database/models'
 import { UsuariosProvider } from '../../database/providers/usuarios'
 import { PasswordCrypto } from '../../shared/services'
+import { JWTService } from '../../shared/services'
 
-interface IBodyProps extends Omit<IUsuario, 'id'|'nome'> {}
+interface IBodyProps extends Omit<IUsuario, 'id' | 'nome'> {}
 
 export const signInValidation: RequestHandler = validation((getSchema) => ({
     body: getSchema<IBodyProps>(
@@ -31,7 +32,10 @@ export const signIn = async (
             },
         })
     }
-    const passwordMatch = await PasswordCrypto.verifyPassword(senha, result.senha)
+    const passwordMatch = await PasswordCrypto.verifyPassword(
+        senha,
+        result.senha
+    )
     if (!passwordMatch) {
         return response.status(StatusCodes.UNAUTHORIZED).json({
             errors: {
@@ -39,8 +43,17 @@ export const signIn = async (
             },
         })
     }
+    const accessToken = JWTService.signIn({ uid: result.id})
+
+    if (accessToken === 'JWT_NOT_FOUND') {
+        return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: {
+                default: 'Erro ao gerar token de acesso'
+            }
+        })
+    }
 
     return response.status(StatusCodes.OK).json({
-        accessToken: 'teste.teste.teste'
+        accessToken: accessToken,
     })
 }
