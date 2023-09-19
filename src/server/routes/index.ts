@@ -63,7 +63,7 @@ router.delete(
 
 // Usuario
 
-router.post('/usuario/signin', UsuariosController.signInValidation, UsuariosController.signIn)
-router.post('/usuario/signup', UsuariosController.signUpValidation, UsuariosController.signUp)
+router.post('/login', UsuariosController.signInValidation, UsuariosController.signIn)
+router.post('/register', UsuariosController.signUpValidation, UsuariosController.signUp)
 
 export { router }

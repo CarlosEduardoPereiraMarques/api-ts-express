@@ -22,7 +22,6 @@ export const signUp = async (
     response: Response
 ) => {
     const result = await UsuariosProvider.create(request.body)
-
     if (result instanceof Error) {
         return response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {
