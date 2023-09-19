@@ -61,8 +61,8 @@ describe('Cidades - GetAll', () => {
         expect(output.statusCode).toEqual(StatusCodes.OK)
         expect(output.body).toEqual(expect.arrayContaining([
             expect.objectContaining({
-              id: expect.any(Number),
-              nome: expect.any(String),
+                id: expect.any(Number),
+                nome: expect.any(String),
             })
         ]))
 
