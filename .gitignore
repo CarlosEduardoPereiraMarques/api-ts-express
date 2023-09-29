@@ -5,3 +5,5 @@ notes.txt
 .vscode
 /coverage
 .vercel
+./dist
+/dist
