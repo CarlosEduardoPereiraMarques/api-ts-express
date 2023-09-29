@@ -2,16 +2,13 @@ import { database } from '../..'
 
 export const count = async (filter: string = ''): Promise<number | Error> => {
     try {
-        const where = filter
-            ? {
+        const totalCount = await database.cidade.count({
+            where: {
                 nome: {
                     contains: filter,
-                },
-            }
-            : {}
-
-        const totalCount = await database.cidade.count({
-            where,
+                    mode: 'insensitive'
+                }
+            },
         })
 
         if (!totalCount) {

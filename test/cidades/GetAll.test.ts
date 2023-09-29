@@ -17,7 +17,7 @@ describe('Cidades - GetAll', () => {
             .send()
 
         expect(output.statusCode).toEqual(StatusCodes.UNAUTHORIZED)
-        expect(typeof output.body).toHaveProperty('errors.default')
+        expect(output.body).toHaveProperty('errors.default')
 
     })
 
@@ -27,7 +27,7 @@ describe('Cidades - GetAll', () => {
             .set('Authorization', `Bearer ${accessToken}`)
             .send()
 
-        expect(output.statusCode).toEqual(StatusCodes.BAD_REQUEST)
+        expect(output.statusCode).toEqual(StatusCodes.OK)
         expect(typeof output.body).toEqual('object')
 
     })
@@ -38,19 +38,17 @@ describe('Cidades - GetAll', () => {
             .set('Authorization', `Bearer ${accessToken}`)
             .send()
 
-        expect(output.statusCode).toEqual(StatusCodes.BAD_REQUEST)
-        expect(output.body).toEqual({})
-
+        expect(output.statusCode).toEqual(StatusCodes.OK)
     })
 
     it('Tenta pegar registros de cidades com parâmetro limit', async () => {
         const output = await testServer
-            .get('/cidades?limit=22')
+            .get('/cidades?limit=3')
             .set('Authorization', `Bearer ${accessToken}`)
             .send()
 
-        expect(output.statusCode).toEqual(StatusCodes.BAD_REQUEST)
-        expect(output.body).toEqual({})
+        expect(output.statusCode).toEqual(StatusCodes.OK)
+        expect(output.body).toHaveLength(3)
 
     })
 
@@ -60,8 +58,13 @@ describe('Cidades - GetAll', () => {
             .set('Authorization', `Bearer ${accessToken}`)
             .send()
 
-        expect(output.statusCode).toEqual(StatusCodes.BAD_REQUEST)
-        expect(output.body).toEqual({})
+        expect(output.statusCode).toEqual(StatusCodes.OK)
+        expect(output.body).toEqual(expect.arrayContaining([
+            expect.objectContaining({
+              id: expect.any(Number),
+              nome: expect.any(String),
+            })
+        ]))
 
     })
 })
